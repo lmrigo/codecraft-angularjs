@@ -1,6 +1,6 @@
 <!DOCTYPE html >
 <html lang="en"
-      ng-app >
+      ng-app="minmax" >
 <head >
 	<title >Controllers</title >
 	<link href="../libs/bootstrap/dist/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
 	</div >
 </nav >
 
-<div class="container main-content" >
+<div class="container main-content" ng-controller="MinMaxCtrl">
 
 	<form >
 		<div class="form-group" >
@@ -50,11 +50,13 @@
 		</div >
 
 		<div class="form-group" >
-			<button class="btn btn-primary" >Register
+			<button class="btn btn-primary" ng-click="onSubmit()">Register
 			</button >
 		</div >
 
 	</form >
+
+	<pre>{{formData | json}} </pre>
 
 </div >
 

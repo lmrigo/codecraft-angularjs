@@ -1,5 +1,5 @@
 <!DOCTYPE html >
-<html lang="en" >
+<html lang="en" ng-app>
 <head >
 	<title >Data Binding</title >
 	<link href="../libs/bootstrap/dist/css/bootstrap.min.css"
@@ -10,7 +10,9 @@
 
 <body >
 
-<div class="container" >
+<div class="container" ng-init="title='Code Craft'" >
+  <h1>{{title}}</h1>
+  <input type="text" class="form-control" ng-model="title">
 </div >
 
 <script src="../libs/angular/angular.min.js" ></script >

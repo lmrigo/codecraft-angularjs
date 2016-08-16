@@ -19,7 +19,8 @@
 
 <div class="container main-content" ng-controller="MinMaxCtrl" >
 
-	<form name="theForm" ng-submit="onSubmit()" >
+	<form name="theForm" ng-submit="onSubmit(theForm.valid)"
+	name="theForm" novalidate="novalidate">
 		<div class="form-group" >
 			<label for="name" >Name</label >
 			<input type="text"
@@ -28,7 +29,9 @@
 			       id="name" >
 		</div >
 
-		<div class="form-group" >
+		<div class="form-group" ng-class="{
+		'has-error': theForm.email.$invalid && (!theForm.email.$pristine || theForm.$submitted),
+		'has-success': theForm.email.$valid}" >
 			<label for="email" >Email</label >
 			<input type="email"
 			       class="form-control"
@@ -36,6 +39,16 @@
 			       id="email"
 			       name="email"
 			       required="required" >
+			       <p class="help-block" ng-show="theForm.email.$error.required && (!theForm.email.$pristine || theForm.$submitted)">
+			       	Email is required
+			       </p>
+ 			       <p class="help-block" ng-show="theForm.email.$error.email">
+ 								Type a valid email
+			       </p>
+			       <pre>{{theForm.email.$valid}}</pre>
+			       <pre>{{theForm.email.$pristine}}</pre>
+			       <pre>{{theForm.email.$error | json}}</pre>
+			       <pre>{{theForm.$submitted}}</pre>
 		</div >
 
 		<div class="form-group" >
@@ -82,7 +95,7 @@
 
 	</form >
 
-	<pre>{{ formModel | json }}</pre>
+	<pre>{{ theForm | json }}</pre>
 
 </div >
 

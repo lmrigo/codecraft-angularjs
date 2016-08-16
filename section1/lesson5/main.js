@@ -4,7 +4,8 @@ var app = angular.module('minmax', []);
 app.controller('MinMaxCtrl', function ($scope, $http) {
 	$scope.formModel = {};
 
-	$scope.onSubmit = function () {
+	$scope.onSubmit = function (valid) {
+		if (valid) {
 		console.log("Hey i'm submitted!");
 		console.log($scope.formModel);
 
@@ -14,5 +15,8 @@ app.controller('MinMaxCtrl', function ($scope, $http) {
 		//	}).error(function(data) {
 		//		console.log(":(")
 		//	});
+	} else {
+		console.log('invalid form')
+	}
 	};
 });

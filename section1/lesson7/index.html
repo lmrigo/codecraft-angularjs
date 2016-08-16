@@ -3,6 +3,7 @@
 <head >
 	<title >Form Validation - Part 3</title >
 	<link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
+	<link href="../libs/ladda/dist/ladda-themeless.min.css" rel="stylesheet" >
 	<link href="main.css" rel="stylesheet" >
 </head >
 
@@ -88,7 +89,13 @@
 
 		<div class="form-group">
 			<button class="btn btn-primary"
-							type="submit">Register
+							type="submit"
+							ladda="submitting"
+							data-style="expand-right">
+							<span ng-show="submitting">Registering</span>
+							<span ng-show="!submitting">Register</span>
+
+							
 			</button>
 		</div>
 
@@ -101,6 +108,9 @@
 
 <script src="../libs/angular/angular.min.js" ></script >
 <script src="../libs/angular-auto-validate/dist/jcs-auto-validate.min.js" ></script >
+<script src="../libs/ladda/dist/spin.min.js" ></script >
+<script src="../libs/ladda/dist/ladda.min.js" ></script >
+<script src="../libs/angular-ladda/dist/angular-ladda.min.js" ></script >
 
 <script src="main.js" ></script >
 
