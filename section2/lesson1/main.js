@@ -1,5 +1,10 @@
+var app = angular.module('codecraft', []);
+
+app.controller('PersonsController', function ($scope) {
+
+
 // This is the sample data for this lesson
-var sample = [
+$scope.persons = [
 		{
 			"name": "Gregory Huffman",
 			"email": "Praesent@pedenec.net",
@@ -901,3 +906,5 @@ var sample = [
 			"country": "Taiwan"
 		}
 	]
+
+})
