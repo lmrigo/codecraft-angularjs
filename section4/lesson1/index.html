@@ -23,9 +23,19 @@
 					       ng-model="name" />
 				</label >
 				<p >{{name}}</p >
-			</div >
-		</div >
-	</div >
+				
+				<div class="child"
+							ng-controller="ChildController">
+							<label >
+							<input type="text"
+							       ng-model="name" />
+						</label >
+						<button class="btn" ng-click="reset()">Reset</button>
+					<p >{{name}}</p >
+				</div>
+			</div > <!-- parent -->
+		</div > <!-- col -->
+	</div > <!-- row -->
 </div >
 
 
