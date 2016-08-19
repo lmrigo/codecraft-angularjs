@@ -10,7 +10,7 @@ var app = angular.module('codecraft', [
 ]);
 
 app.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider) {
-	$httpProvider.defaults.headers.common['Authorization'] = 'Token 20002cd74d5ce124ae219e739e18956614aab490';
+	$httpProvider.defaults.headers.common['Authorization'] = 'Token a4a945e5de9a7ac28044337e25d3d2252fc0e6e4';
 	$resourceProvider.defaults.stripTrailingSlashes = false;
 	laddaProvider.setOption({
 		style: 'expand-right'
@@ -28,6 +28,17 @@ app.factory("Contact", function ($resource) {
 		}
 	});
 });
+
+app.filter('defaultImage', function () {
+
+	return function (input, param) {
+		// console.log(input + ' - ' + param)
+		if (!input) {
+			return param
+		}
+		return input
+	}
+})
 
 app.controller('PersonDetailController', function ($scope, ContactService) {
 	$scope.contacts = ContactService;
