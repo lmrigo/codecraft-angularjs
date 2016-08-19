@@ -1,16 +1,14 @@
 var app = angular.module('codecraft', []);
 
-app.controller('PersonsController', function ($scope) {
+app.controller('PersonDetailController', function ($scope, ContactService) {
+	$scope.contacts = ContactService
+})
+
+app.controller('PersonListController', function ($scope, ContactService) {
 
 	$scope.search = "";
 	$scope.order = "email";
-	$scope.selectedIndex = null;
-	$scope.selectedPerson = null;
-
-	$scope.selectPerson = function (person, index) {
-		$scope.selectedIndex = index;
-		$scope.selectedPerson = person;
-	};
+	$scope.contacts = ContactService
 
 	$scope.sensitiveSearch = function(person) {
 		if ($scope.search) {
@@ -20,7 +18,16 @@ app.controller('PersonsController', function ($scope) {
 		return true;
 	};
 
-	$scope.persons = [
+});
+
+app.service('ContactService', function () {
+
+	return {
+		'addPerson' : function (person) {
+			this.persons.push(person)
+		},
+		'selectedPerson' : null,
+		'persons' : [
 		{
 			"name": "Gregory Huffman",
 			"email": "Praesent@pedenec.net",
@@ -922,4 +929,5 @@ app.controller('PersonsController', function ($scope) {
 			"country": "Taiwan"
 		}
 	]
-});
+	}
+})
