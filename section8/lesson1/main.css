@@ -56,3 +56,13 @@ body {
     font-size: 18px; }
   .sortables span:hover {
     color: #002a80; }
+
+span.fa-search {
+  color: white;
+}
+span.fa-sort {
+  color: white;
+}
+option {
+  color: #666666;
+}
