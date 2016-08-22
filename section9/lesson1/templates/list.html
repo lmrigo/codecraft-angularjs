@@ -1,7 +1,13 @@
 <div class="col-md-12" >
 
+	<div class="row"
+   infinite-scroll="loadMore()"
+   infinite-scroll-immediate-check="false"
+   infinite-scroll-distance="1">
+		<cc-card ng-repeat="person in contacts.persons" user="person" delete-user="parentDeleteUser"></cc-card>
+	</div>
 
-	<table class="table table-bordered"
+	<!-- <table class="table table-bordered"
 	       infinite-scroll="loadMore()"
 	       infinite-scroll-immediate-check="false"
 	       infinite-scroll-distance="1" >
@@ -46,19 +52,16 @@
 		</tr >
 
 
-	</table >
+	</table > -->
 
 	<div ng-show="contacts.persons.length == 0 && !contacts.isLoading" >
 		<div class="alert alert-info" >
-			<p class="text-center" >No results found for search term '{{ search }}'</p >
+			<p class="text-center" >No results found for search term '{{ contacts.search }}'</p >
 		</div >
 	</div >
 
-	<div class="spinner"
-	     ng-show="contacts.isLoading" >
-		<span us-spinner="{radius:8, width:5, length: 3, lines:9}" ></span >
-
-		<p >Loading...</p >
-	</div >
+	<cc-spinner is-loading="contacts.isLoading" message="Mooing...">
+		<!-- <span>Mooing...</span> -->
+	</cc-spinner>
 
 </div >

@@ -48,7 +48,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 app.config(function ($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider) {
-	$httpProvider.defaults.headers.common['Authorization'] = 'Token 20002cd74d5ce124ae219e739e18956614aab490';
+	$httpProvider.defaults.headers.common['Authorization'] = 'Token a4a945e5de9a7ac28044337e25d3d2252fc0e6e4';
 	$resourceProvider.defaults.stripTrailingSlashes = false;
 	laddaProvider.setOption({
 		style: 'expand-right'
@@ -75,6 +75,37 @@ app.factory("Contact", function ($resource) {
 		}
 	});
 });
+
+app.directive('ccSpinner', function () {
+	return {
+		// 'transclude': true,
+		'restrict': 'AE',
+		'templateUrl': 'templates/spinner.html',
+		'scope': {
+			'isLoading': '=',
+			'message': '@'
+		}
+	}
+})
+app.directive('ccCard', function () {
+	return {
+		'restrict': 'AE',
+		'templateUrl': 'templates/card.html',
+		'scope': {
+			'user': '='
+			// ,'deleteUser': '&'
+		},
+		'controller' : function ($scope, ContactService) {
+			$scope.isDeleting = false
+			$scope.deleteUser = function () {
+				$scope.isDeleting = true
+				ContactService.removeContact($scope.user).then(function () {
+					$scope.isDeleting = false
+				})
+			}
+		}
+	}
+})
 
 app.controller('PersonDetailController', function ($scope, $stateParams, $state, ContactService) {
 	$scope.mode = "Edit";
@@ -122,6 +153,11 @@ app.controller('PersonListController', function ($scope, $modal, ContactService)
 		$scope.contacts.loadMore();
 	};
 
+/*  //deleted code
+	$scope.parentDeleteUser = function (user) {
+		$scope.contacts.removeContact(user)
+	}
+
 	$scope.showCreateModal = function () {
 		$scope.contacts.selectedPerson = {};
 		$scope.createModal = $modal({
@@ -129,8 +165,7 @@ app.controller('PersonListController', function ($scope, $modal, ContactService)
 			template: 'templates/modal.create.tpl.html',
 			show: true
 		})
-	};
-
+	};*/
 
 });
 
